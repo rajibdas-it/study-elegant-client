@@ -13,7 +13,9 @@ const Course = ({ course }) => {
         <p>{descriptions}</p>
         <div className="card-actions justify-end">
           <Link to={`/course/${id}`}>
-            <button className="btn btn-info">Details</button>
+            <button className="btn btn-info bg-gradient-to-tr from-purple-400 to-blue-400">
+              Details
+            </button>
           </Link>
         </div>
       </div>

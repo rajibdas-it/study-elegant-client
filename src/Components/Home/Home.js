@@ -57,13 +57,14 @@ const Home = () => {
 
       {/* slider section end */}
       {/* jumbortan section start */}
-      {/* <section className="hidden lg:block">
-       
-      </section> */}
+
       {/* jumbortan section end */}
       {/* pricing section start  */}
       <PricingCard></PricingCard>
       {/* pricing section end  */}
+      <section className="rounded mt-200 bg-gradient-to-tr from-purple-400 to-blue-400">
+        <Jumborton></Jumborton>
+      </section>
     </div>
   );
 };
