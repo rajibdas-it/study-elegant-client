@@ -6,6 +6,8 @@ import three from "../../assets/others/5.json";
 import { CourseContext } from "../../Layout/Main";
 import Course from "../Course/Course";
 import Slider from "../Slider/Slider";
+import Jumborton from "../Jumborton/Jumborton";
+import PricingCard from "../PricingCard/PricingCard";
 //import four from "../../assets/others/7.json";
 
 const Home = () => {
@@ -55,8 +57,13 @@ const Home = () => {
 
       {/* slider section end */}
       {/* jumbortan section start */}
-      <section></section>
+      {/* <section className="hidden lg:block">
+       
+      </section> */}
       {/* jumbortan section end */}
+      {/* pricing section start  */}
+      <PricingCard></PricingCard>
+      {/* pricing section end  */}
     </div>
   );
 };
