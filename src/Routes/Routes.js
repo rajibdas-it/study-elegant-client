@@ -5,6 +5,7 @@ import Register from "../Components/Authentication/Register";
 import Blogs from "../Components/Blogs/Blogs";
 import Contract from "../Components/Contract/Contract";
 import Course from "../Components/Course/Course";
+import CourseDetails from "../Components/CourseDetails/CourseDetails";
 import Courses from "../Components/Courses/Courses";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import FAQ from "../Components/FAQ/FAQ";
@@ -19,8 +20,18 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home></Home> },
       { path: "/home", element: <Home></Home> },
-      { path: "/courses", element: <Courses></Courses> },
-      { path: "/course/:id", element: <Course></Course> },
+      {
+        path: "/courses",
+        element: <Courses></Courses>,
+        loader: () =>
+          fetch("https://study-elegant-server.vercel.app/allcourses"),
+      },
+      {
+        path: "/course/:id",
+        element: <CourseDetails></CourseDetails>,
+        loader: ({ params }) =>
+          fetch(`https://study-elegant-server.vercel.app/course/${params.id}`),
+      },
       { path: "/blogs", element: <Blogs></Blogs> },
       { path: "/faq", element: <FAQ></FAQ> },
       { path: "/contract", element: <Contract></Contract> },
