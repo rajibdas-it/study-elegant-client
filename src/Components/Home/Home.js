@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Lottie from "lottie-react";
-import one from "../../assets/others/11.json";
-import two from "../../assets/others/3.json";
+// import one from "../../assets/others/11.json";
+//import two from "../../assets/others/3.json";
 import three from "../../assets/others/5.json";
-import four from "../../assets/others/7.json";
-import Courses from "../Courses/Courses";
+import { CourseContext } from "../../Layout/Main";
+import Course from "../Course/Course";
+//import four from "../../assets/others/7.json";
+
 const Home = () => {
+  const courses = useContext(CourseContext);
   return (
     <div className="mt-6 w-[80%] mx-auto">
       {/* banner section start */}
@@ -26,7 +29,7 @@ const Home = () => {
               Do different today and every day.
             </p>
           </div>
-          <div className="w-[60%] m-3 sm:text-center">
+          <div className="w-[60%] h-full m-3 sm:text-center">
             <Lottie animationData={three} loop={true} />
           </div>
         </div>
@@ -34,7 +37,15 @@ const Home = () => {
       {/* banner section end */}
 
       {/* card section start */}
-      <section></section>
+      <section>
+        <div className=" w-[90%] mx-auto mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {courses.map((course) => (
+              <Course key={course.id} course={course}></Course>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* card section end */}
       {/* slider section start */}
       <section></section>

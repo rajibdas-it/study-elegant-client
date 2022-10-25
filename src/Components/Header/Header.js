@@ -4,11 +4,18 @@ import logo from "../../assets/logo.png";
 
 const Header = () => {
   const user = false;
-  const [dark, setDark] = useState(false);
+  // const [theme, setTheme] = useState("light");
 
-  const handleChange = (e) => {
-    setDark(true);
-  };
+  // const toggleTheme = () => {
+  //   if (theme === "light") {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
+
+  // alert(`${theme} theme set`);
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -16,11 +23,11 @@ const Header = () => {
           <img className="w-full" src={logo} alt="" />
         </Link>
       </div>
-      <input
-        onClick={handleChange}
+      {/* <input
+        onClick={toggleTheme}
         type="checkbox"
-        className="toggle toggle-md"
-      />
+        className="toggle toggle-md mr-3"
+      /> */}
       <div className="flex-none gap-2 justify-center items-center">
         <div>
           <ul className="hidden lg:flex gap-10 text-gray-500 ">

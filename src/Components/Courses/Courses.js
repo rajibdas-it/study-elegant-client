@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { CourseContext } from "../../Layout/Main";
 import Course from "../Course/Course";
 
 const Courses = () => {
-  const courses = useLoaderData();
+  const courses = useContext(CourseContext);
+  // console.log(courses);
+
+  // const courses = useLoaderData();
   // console.log(courses);
   return (
     <div className=" w-[90%] mx-auto mt-10">
