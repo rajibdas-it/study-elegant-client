@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import three from "../../assets/others/5.json";
 import { CourseContext } from "../../Layout/Main";
 import Course from "../Course/Course";
+import Slider from "../Slider/Slider";
 //import four from "../../assets/others/7.json";
 
 const Home = () => {
@@ -48,7 +49,10 @@ const Home = () => {
       </section>
       {/* card section end */}
       {/* slider section start */}
-      <section></section>
+      <section>
+        <Slider></Slider>
+      </section>
+
       {/* slider section end */}
       {/* jumbortan section start */}
       <section></section>

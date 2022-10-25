@@ -17,7 +17,7 @@ const Header = () => {
   // alert(`${theme} theme set`);
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 shadow-lg">
       <div className="flex-1">
         <Link to="/">
           <img className="w-full" src={logo} alt="" />

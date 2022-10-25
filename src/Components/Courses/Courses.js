@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import { CourseContext } from "../../Layout/Main";
 import Course from "../Course/Course";
 
