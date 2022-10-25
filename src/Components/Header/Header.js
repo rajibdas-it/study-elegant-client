@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import Sidebar from "../Courses/Sidebar";
 
 const Header = () => {
   const user = false;

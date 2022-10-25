@@ -56,15 +56,17 @@ const Home = () => {
       </section>
 
       {/* slider section end */}
-      {/* jumbortan section start */}
 
-      {/* jumbortan section end */}
       {/* pricing section start  */}
       <PricingCard></PricingCard>
       {/* pricing section end  */}
+
+      {/* jumbortan section start */}
+
       <section className="rounded mt-200 bg-gradient-to-tr from-purple-400 to-blue-400">
         <Jumborton></Jumborton>
       </section>
+      {/* jumbortan section end */}
     </div>
   );
 };
