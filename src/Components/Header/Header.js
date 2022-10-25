@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 const Header = () => {
   const user = false;
+  const [dark, setDark] = useState(false);
+
+  const handleChange = (e) => {
+    setDark(true);
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -11,7 +16,11 @@ const Header = () => {
           <img className="w-full" src={logo} alt="" />
         </Link>
       </div>
-      <input type="checkbox" className="toggle toggle-md" />
+      <input
+        onClick={handleChange}
+        type="checkbox"
+        className="toggle toggle-md"
+      />
       <div className="flex-none gap-2 justify-center items-center">
         <div>
           <ul className="hidden lg:flex gap-10 text-gray-500 ">
