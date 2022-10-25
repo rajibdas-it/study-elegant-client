@@ -11,6 +11,7 @@ const Header = () => {
           <img className="w-full" src={logo} alt="" />
         </Link>
       </div>
+      <input type="checkbox" className="toggle toggle-md" />
       <div className="flex-none gap-2 justify-center items-center">
         <div>
           <ul className="hidden lg:flex gap-10 text-gray-500 ">
