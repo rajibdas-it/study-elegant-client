@@ -1,30 +1,107 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const Header = () => {
+  const user = false;
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link to="/">
+          <img className="w-full" src={logo} alt="" />
+        </Link>
       </div>
       <div className="flex-none gap-2 justify-center items-center">
         <div>
           <ul className="hidden lg:flex gap-10 text-gray-500 ">
             <li>
-              <Link to="/home">Home</Link>{" "}
+              <NavLink
+                to="/home"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/courses">Courses</Link>{" "}
+              <NavLink
+                to="/courses"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                Courses
+              </NavLink>
             </li>
             <li>
-              <Link to="/blogs">Blogs</Link>{" "}
+              <NavLink
+                to="/blogs"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                Blogs
+              </NavLink>
             </li>
             <li>
-              <Link to="/faq">FAQ</Link>{" "}
+              <NavLink
+                to="/faq"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                FAQ
+              </NavLink>
             </li>
             <li>
-              <Link to="/contract">Contract</Link>{" "}
+              <NavLink
+                to="/contract"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                Contract
+              </NavLink>
             </li>
+            {!user && (
+              <>
+                <li>
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-blue-400 font-semibold"
+                        : "text-black font-semibold"
+                    }
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/register"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-blue-400 font-semibold"
+                        : "text-black font-semibold"
+                    }
+                  >
+                    Register
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="dropdown dropdown-end lg:hidden">
@@ -52,46 +129,118 @@ const Header = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/home">Home</Link>{" "}
+              <NavLink
+                to="/home"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/courses">Courses</Link>{" "}
+              <NavLink
+                to="/courses"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                Courses
+              </NavLink>
             </li>
             <li>
-              <Link to="/blogs">Blogs</Link>{" "}
+              <NavLink
+                to="/blogs"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                Blogs
+              </NavLink>
             </li>
             <li>
-              <Link to="/faq">FAQ</Link>{" "}
+              <NavLink
+                to="/faq"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                FAQ
+              </NavLink>
             </li>
             <li>
-              <Link to="/contract">Contract</Link>{" "}
+              <NavLink
+                to="/contract"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-400 font-semibold"
+                    : "text-black font-semibold"
+                }
+              >
+                Contract
+              </NavLink>
             </li>
+            {!user && (
+              <>
+                <li>
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-blue-400 font-semibold"
+                        : "text-black font-semibold"
+                    }
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/register"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-blue-400 font-semibold"
+                        : "text-black font-semibold"
+                    }
+                  >
+                    Register
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
+        {user && (
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://placeimg.com/80/80/people" />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a>Profile</a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a>Logout</a>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
