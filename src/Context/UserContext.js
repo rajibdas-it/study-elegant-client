@@ -5,9 +5,11 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 
@@ -39,6 +41,14 @@ const UserContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const updateUserProfile = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
+
+  const userEmailVerify = () => {
+    return sendEmailVerification(auth.currentUser);
+  };
+
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
@@ -62,6 +72,8 @@ const UserContext = ({ children }) => {
     githubSignIn,
     userLogin,
     logOut,
+    updateUserProfile,
+    userEmailVerify,
   };
   return (
     <div>

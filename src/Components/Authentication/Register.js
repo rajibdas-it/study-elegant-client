@@ -4,7 +4,13 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
 
 const Register = () => {
-  const { createUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+  const {
+    createUser,
+    googleSignIn,
+    githubSignIn,
+    updateUserProfile,
+    userEmailVerify,
+  } = useContext(AuthContext);
   const [fullName, setFullName] = useState("");
   const [photoURL, setPhotoURL] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -20,11 +26,15 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
+    const fullName = form.fullname.value;
+    const photoURL = form.photoURL.value;
     if (password === confirmPassword) {
       createUser(email, password)
         .then((result) => {
           const user = result.user;
           form.reset();
+          handleUpdateUseProfile(fullName, photoURL);
+          handleEmailVerify();
           navigate("/");
           toast.success(
             "Account Created Successfully. Please check your email and Verify it.",
@@ -69,6 +79,21 @@ const Register = () => {
       });
   };
 
+  const handleEmailVerify = () => {
+    userEmailVerify()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+  const handleUpdateUseProfile = (fullName, photoURL) => {
+    const profile = {
+      displayName: fullName,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="">
       <div className="hero min-h-screen bg-base-200">
@@ -105,7 +130,6 @@ const Register = () => {
                   <span className="label-text">Full Name</span>
                 </label>
                 <input
-                  onBlur={(e) => setFullName(e.target.value)}
                   type="text"
                   name="fullname"
                   placeholder="Full Name"
@@ -153,9 +177,8 @@ const Register = () => {
                   <span className="label-text">Photo URL</span>
                 </label>
                 <input
-                  onBlur={(e) => setPhotoURL(e.target.value)}
                   type="text"
-                  name="photo url"
+                  name="photoURL"
                   placeholder="photoUrl"
                   className="input input-bordered"
                 />
