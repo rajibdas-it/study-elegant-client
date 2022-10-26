@@ -10,6 +10,7 @@ import Courses from "../Components/Courses/Courses";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import FAQ from "../Components/FAQ/FAQ";
 import Home from "../Components/Home/Home";
+import Profile from "../Components/UserProfile/Profile";
 import Main from "../Layout/Main";
 import PrivateRoute from "./PrivateRoute";
 
@@ -45,6 +46,14 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Register></Register> },
       { path: "/resetpassword", element: <PasswordReset></PasswordReset> },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

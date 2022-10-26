@@ -58,7 +58,7 @@ const Register = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        navigate("/");
       })
       .catch((error) => {
         // setErrorMsg(error.message);
@@ -71,7 +71,7 @@ const Register = () => {
     githubSignIn()
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        navigate("/");
       })
       .catch((error) => {
         // setErrorMsg(error.message);
@@ -82,7 +82,9 @@ const Register = () => {
   const handleEmailVerify = () => {
     userEmailVerify()
       .then(() => {})
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 1500 });
+      });
   };
   const handleUpdateUseProfile = (fullName, photoURL) => {
     const profile = {
@@ -91,19 +93,23 @@ const Register = () => {
     };
     updateUserProfile(profile)
       .then(() => {})
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.error(error.message, { autoClose: 1500 });
+      });
   };
 
   return (
-    <div className="">
-      <div className="hero min-h-screen bg-base-200">
+    <div>
+      <div className="hero bg-base-200">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Register now!</h1>
+            <h1 className="text-5xl font-bold italic text-blue-500">
+              Register now!
+            </h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             {/* error msg display */}
-            {errorMsg && (
+            {/* {errorMsg && (
               <div className="alert alert-error shadow-lg">
                 <div>
                   <svg
@@ -122,7 +128,7 @@ const Register = () => {
                   <span>{errorMsg}</span>
                 </div>
               </div>
-            )}
+            )} */}
             {/* error msg display */}
             <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
@@ -184,7 +190,9 @@ const Register = () => {
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn btn-info rounded shadow-lg hover:bg-gradient-to-r from-purple-500 to-blue-500">
+                  Register
+                </button>
               </div>
             </form>
             <div className="">
@@ -196,7 +204,7 @@ const Register = () => {
               <button
                 onClick={handleGoogleSignIn}
                 aria-label="Log in with Google"
-                className="p-3 rounded-sm"
+                className="p-3 rounded shadow-lg hover:bg-gradient-to-r from-purple-500 to-blue-500"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -210,7 +218,7 @@ const Register = () => {
               <button
                 onClick={handleGithubSignIn}
                 aria-label="Log in with GitHub"
-                className="p-3 rounded-sm"
+                className="p-3 rounded shadow-lg hover:bg-gradient-to-r from-purple-500 to-blue-500"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

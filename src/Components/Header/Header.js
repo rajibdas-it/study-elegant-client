@@ -255,8 +255,8 @@ const Header = () => {
             {/* <div className="tooltip" data-tip="hello"> */}
             <label
               tabIndex={0}
-              className="btn btn-ghost btn-circle avatar tooltip"
-              data-tip={user?.displayName ? user?.displayName : "no name found"}
+              title={user?.displayName}
+              className="btn btn-ghost btn-circle avatar "
             >
               <div className="w-10 rounded-full">
                 {user?.photoURL ? (
@@ -272,10 +272,12 @@ const Header = () => {
               tabIndex={0}
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
-              <li>
-                <a>Profile</a>
+              <li className="mb-2">
+                <Link to="/profile" className="btn btn-sm btn-outline btn-info">
+                  Profile
+                </Link>
               </li>
-              <br />
+
               <li>
                 <button
                   onClick={handleSignOut}
