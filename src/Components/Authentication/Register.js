@@ -5,7 +5,8 @@ import { AuthContext } from "../../Context/UserContext";
 
 const Register = () => {
   const { createUser, googleSignIn, githubSignIn } = useContext(AuthContext);
-  const [userName, setUserName] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
   const navigate = useNavigate();
@@ -23,40 +24,49 @@ const Register = () => {
       createUser(email, password)
         .then((result) => {
           const user = result.user;
-          // console.log(user);
           form.reset();
           navigate("/");
           toast.success(
-            "Account Created Successfully. Please check your email.",
-            { autoClose: 1000 }
+            "Account Created Successfully. Please check your email and Verify it.",
+            { autoClose: 1500 }
           );
           // toast.success("Right Answer", { autoClose: 500 });
           // setMsg("Account Created Successfully. Please check your email.");
         })
-        .then((error) => {
+        .catch((error) => {
           setErrorMsg(error.message);
+          toast.error(error.message, { autoClose: 1500 });
         });
     } else {
-      toast.error("Password and Confirm doesn't match", { autoClose: 1000 });
+      toast.error("Password and Confirm doesn't match", { autoClose: 1500 });
     }
     // console.log(email, password, confirmPassword);
   };
+
+  // google signin handler code
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
       })
-      .then((error) => console.log(error));
+      .catch((error) => {
+        // setErrorMsg(error.message);
+        toast.error(error.message, { autoClose: 1500 });
+      });
   };
 
+  // github signin handler code
   const handleGithubSignIn = () => {
     githubSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
       })
-      .then((err) => console.log(err));
+      .catch((error) => {
+        // setErrorMsg(error.message);
+        toast.error(error.message, { autoClose: 1500 });
+      });
   };
 
   return (
@@ -67,16 +77,38 @@ const Register = () => {
             <h1 className="text-5xl font-bold">Register now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            {/* error msg display */}
+            {errorMsg && (
+              <div className="alert alert-error shadow-lg">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current flex-shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span>{errorMsg}</span>
+                </div>
+              </div>
+            )}
+            {/* error msg display */}
             <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Username</span>
+                  <span className="label-text">Full Name</span>
                 </label>
                 <input
-                  onBlur={(e) => setUserName(e.target.value)}
+                  onBlur={(e) => setFullName(e.target.value)}
                   type="text"
-                  name="username"
-                  placeholder="username"
+                  name="fullname"
+                  placeholder="Full Name"
                   className="input input-bordered"
                 />
               </div>
@@ -114,6 +146,18 @@ const Register = () => {
                   placeholder="Confirm Password"
                   className="input input-bordered"
                   required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  onBlur={(e) => setPhotoURL(e.target.value)}
+                  type="text"
+                  name="photo url"
+                  placeholder="photoUrl"
+                  className="input input-bordered"
                 />
               </div>
               <div className="form-control mt-6">
@@ -160,7 +204,6 @@ const Register = () => {
                 Sign In
               </Link>
             </p>
-            <p className="bg-red-300 text-blue-500 ">{errorMsg}</p>
           </div>
         </div>
       </div>

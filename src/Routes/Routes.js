@@ -3,6 +3,7 @@ import Login from "../Components/Authentication/Login";
 import PasswordReset from "../Components/Authentication/PasswordReset";
 import Register from "../Components/Authentication/Register";
 import Blogs from "../Components/Blogs/Blogs";
+import CheckOut from "../Components/CheckOut/CheckOut";
 import Contract from "../Components/Contract/Contract";
 import CourseDetails from "../Components/CourseDetails/CourseDetails";
 import Courses from "../Components/Courses/Courses";
@@ -24,6 +25,12 @@ export const router = createBrowserRouter([
       {
         path: "/course/:id",
         element: <CourseDetails></CourseDetails>,
+        loader: ({ params }) =>
+          fetch(`https://study-elegant-server.vercel.app/course/${params.id}`),
+      },
+      {
+        path: "/checkout/:id",
+        element: <CheckOut></CheckOut>,
         loader: ({ params }) =>
           fetch(`https://study-elegant-server.vercel.app/course/${params.id}`),
       },
