@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Lottie from "lottie-react";
 import thankyou from "../../assets/thankyoumsg.json";
 
@@ -8,10 +8,7 @@ const CheckOut = () => {
   const { id, title, descriptions, price, rating, img } = checkOutCourse;
   return (
     <div className="p-5  mx-auto">
-      <div className="">
-        <Lottie animationData={thankyou} loop={true} />
-      </div>
-      <div className="alert alert-success shadow-lg">
+      <div className="alert alert-success bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +28,17 @@ const CheckOut = () => {
             been confirmed!
           </span>
         </div>
+      </div>
+      <div>
+        <Lottie animationData={thankyou} loop={true} />
+      </div>
+      <div className="text-center">
+        <Link to="/courses">
+          {" "}
+          <button className="btn btn-wide btn-outline">
+            Back to the courses
+          </button>
+        </Link>
       </div>
     </div>
   );
