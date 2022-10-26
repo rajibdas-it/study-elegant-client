@@ -11,6 +11,7 @@ import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import FAQ from "../Components/FAQ/FAQ";
 import Home from "../Components/Home/Home";
 import Main from "../Layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <CheckOut></CheckOut>,
+        element: (
+          <PrivateRoute>
+            <CheckOut></CheckOut>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://study-elegant-server.vercel.app/course/${params.id}`),
       },

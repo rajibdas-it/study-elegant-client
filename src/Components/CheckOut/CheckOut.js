@@ -30,7 +30,7 @@ const CheckOut = () => {
         </div>
       </div>
       <div>
-        <Lottie animationData={thankyou} loop={true} />
+        <Lottie animationData={thankyou} loop={false} />
       </div>
       <div className="text-center">
         <Link to="/courses">
