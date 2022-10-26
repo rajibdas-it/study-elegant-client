@@ -33,7 +33,7 @@ const Header = () => {
 
   return (
     <div className="navbar shadow-lg">
-      <div className="flex-1">
+      <div className="flex-1 ml-3">
         <Link to="/">
           <img className="w-full" src={logo} alt="" />
         </Link>
@@ -120,7 +120,7 @@ const Header = () => {
                     Login
                   </NavLink>
                 </li>
-                <li>
+                <li className="mr-3">
                   <NavLink
                     to="/register"
                     className={({ isActive }) =>

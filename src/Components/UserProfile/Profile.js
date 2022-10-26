@@ -5,6 +5,7 @@ import { AuthContext } from "../../Context/UserContext";
 
 const Profile = () => {
   const { user, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleUpdateUseProfile = (event) => {
     event.preventDefault();
@@ -20,6 +21,7 @@ const Profile = () => {
     updateUserProfile(profile)
       .then(() => {
         toast.success("Profile Updated Successfully", { autoClose: 1500 });
+        navigate("/profile");
       })
       .catch((error) => {
         toast.error(error.message, { autoClose: 1500 });

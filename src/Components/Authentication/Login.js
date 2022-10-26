@@ -53,8 +53,8 @@ const Login = () => {
       });
   };
   return (
-    <div className="">
-      <div className="hero min-h-screen bg-base-200">
+    <div className="mt-20">
+      <div className="min-h-screen lg:w-[50%] mx-auto">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold italic text-blue-500">
