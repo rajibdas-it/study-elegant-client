@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { AuthContext } from "../../Context/UserContext";
 import Sidebar from "../Courses/Sidebar";
+import { FaRegUser, FaRegUserCircle } from "react-icons/fa";
+import noimg from "../../assets/noimg.webp";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -20,6 +22,7 @@ const Header = () => {
 
   // alert(`${theme} theme set`);
 
+  // Signout Funciton
   const handleSignOut = () => {
     logOut()
       .then((result) => {
@@ -256,7 +259,11 @@ const Header = () => {
               data-tip={user?.displayName ? user?.displayName : "no name found"}
             >
               <div className="w-10 rounded-full">
-                <img src={user?.photoURL} alt="" />
+                {user?.photoURL ? (
+                  <img src={user?.photoURL} alt="" />
+                ) : (
+                  <img src={noimg} alt="" />
+                )}
               </div>
             </label>
             {/* </div> */}
