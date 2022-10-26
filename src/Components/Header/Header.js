@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { AuthContext } from "../../Context/UserContext";
 import Sidebar from "../Courses/Sidebar";
 
 const Header = () => {
-  const user = false;
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  // const user = false;
   // const [theme, setTheme] = useState("light");
 
   // const toggleTheme = () => {
@@ -16,6 +19,14 @@ const Header = () => {
   // };
 
   // alert(`${theme} theme set`);
+
+  const handleSignOut = () => {
+    logOut()
+      .then((result) => {
+        navigate("/login");
+      })
+      .then((error) => {});
+  };
 
   return (
     <div className="navbar shadow-lg">
@@ -92,7 +103,7 @@ const Header = () => {
                 Contract
               </NavLink>
             </li>
-            {!user && (
+            {!user?.uid && (
               <>
                 <li>
                   <NavLink
@@ -206,7 +217,7 @@ const Header = () => {
                 Contract
               </NavLink>
             </li>
-            {!user && (
+            {!user?.uid && (
               <>
                 <li>
                   <NavLink
@@ -236,13 +247,20 @@ const Header = () => {
             )}
           </ul>
         </div>
-        {user && (
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+        {user?.uid && (
+          <div className="dropdown dropdown-end mr-3">
+            {/* <div className="tooltip" data-tip="hello"> */}
+            <label
+              tabIndex={0}
+              className="btn btn-ghost btn-circle avatar tooltip"
+              data-tip={user?.displayName ? user?.displayName : "no name found"}
+            >
               <div className="w-10 rounded-full">
-                <img src="https://placeimg.com/80/80/people" />
+                <img src={user?.photoURL} alt="" />
               </div>
             </label>
+            {/* </div> */}
+
             <ul
               tabIndex={0}
               className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
@@ -250,11 +268,14 @@ const Header = () => {
               <li>
                 <a>Profile</a>
               </li>
+              <br />
               <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
+                <button
+                  onClick={handleSignOut}
+                  className="btn btn-sm btn-outline btn-warning"
+                >
+                  Log Out
+                </button>
               </li>
             </ul>
           </div>

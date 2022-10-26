@@ -1,19 +1,18 @@
-import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
 
 const Register = () => {
-  const { createUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, googleSignIn, githubSignIn } = useContext(AuthContext);
   const [userName, setUserName] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const googleProvier = new GoogleAuthProvider();
+  const navigate = useNavigate();
 
-  // console.log(userName);
   const handleRegister = (event) => {
     event.preventDefault();
+    setErrorMsg("");
 
     const form = event.target;
 
@@ -24,8 +23,9 @@ const Register = () => {
       createUser(email, password)
         .then((result) => {
           const user = result.user;
-          console.log(user);
+          // console.log(user);
           form.reset();
+          navigate("/");
           toast.success(
             "Account Created Successfully. Please check your email.",
             { autoClose: 1000 }
@@ -35,8 +35,6 @@ const Register = () => {
         })
         .then((error) => {
           setErrorMsg(error.message);
-          // const errorMessage = error.message;
-          // setErrorMsg(errorMessage);
         });
     } else {
       toast.error("Password and Confirm doesn't match", { autoClose: 1000 });
@@ -44,12 +42,21 @@ const Register = () => {
     // console.log(email, password, confirmPassword);
   };
   const handleGoogleSignIn = () => {
-    googleSignIn(googleProvier)
+    googleSignIn()
       .then((result) => {
         const user = result.user;
         console.log(user);
       })
       .then((error) => console.log(error));
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .then((err) => console.log(err));
   };
 
   return (
@@ -59,28 +66,7 @@ const Register = () => {
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Register now!</h1>
           </div>
-
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            {errorMsg && (
-              <div className="alert alert-success shadow-lg">
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="stroke-current flex-shrink-0 h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span>{errorMsg}</span>
-                </div>
-              </div>
-            )}
             <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -155,6 +141,7 @@ const Register = () => {
               </button>
 
               <button
+                onClick={handleGithubSignIn}
                 aria-label="Log in with GitHub"
                 className="p-3 rounded-sm"
               >
@@ -173,6 +160,7 @@ const Register = () => {
                 Sign In
               </Link>
             </p>
+            <p className="bg-red-300 text-blue-500 ">{errorMsg}</p>
           </div>
         </div>
       </div>
