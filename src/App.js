@@ -6,7 +6,7 @@ import { router } from "./Routes/Routes";
 
 function App() {
   return (
-    <div>
+    <div className="bg-gradient-to-r from-indigo-100 to-purple-100">
       <RouterProvider router={router}></RouterProvider>
       <ToastContainer position="top-center" />
     </div>
