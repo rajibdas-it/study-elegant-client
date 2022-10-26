@@ -1,20 +1,20 @@
 import React from "react";
 import { FaArrowAltCircleRight, FaCloudDownloadAlt } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
-import CourseCover from "./CourseCover";
 
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
   const { id, title, shortDes, descriptions, price, rating, img, TopicCover } =
     courseDetails;
   return (
-    <div className="w-[85%] mx-auto mt-20 mb-20">
+    <div className="w-[90%] lg:w-[70%] mx-auto mt-20 mb-20">
       <div className="card card-compact w-full bg-base-100 shadow-xl">
         <figure>
           <img className="w-full" src={img} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{title}</h2>
+          <h2 className="card-title text-2xl font-bold">{title}</h2>
+          <p className="font-bold underline">Course Descriptions:</p>
           <p>{descriptions}</p>
           <div>
             <p className="font-bold underline">Things We Cover</p>

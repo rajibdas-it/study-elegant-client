@@ -5,22 +5,24 @@ import { AuthContext } from "../../Context/UserContext";
 import Sidebar from "../Courses/Sidebar";
 import { FaRegUser, FaRegUserCircle } from "react-icons/fa";
 import noimg from "../../assets/noimg.webp";
+import { toast } from "react-toastify";
+import { Autoplay } from "swiper";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   // const user = false;
-  // const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("light");
 
-  // const toggleTheme = () => {
-  //   if (theme === "light") {
-  //     setTheme("dark");
-  //   } else {
-  //     setTheme("light");
-  //   }
-  // };
-
-  // alert(`${theme} theme set`);
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+      toast.success("Theme Dark", { autoClose: 1000 });
+    } else {
+      setTheme("light");
+      toast.success("Theme Light", { autoClose: 1000 });
+    }
+  };
 
   // Signout Funciton
   const handleSignOut = () => {
@@ -38,11 +40,11 @@ const Header = () => {
           <img className="w-full" src={logo} alt="" />
         </Link>
       </div>
-      {/* <input
+      <input
         onClick={toggleTheme}
         type="checkbox"
         className="toggle toggle-md mr-3"
-      /> */}
+      />
       <div className="flex-none gap-2 justify-center items-center">
         <div>
           <ul className="hidden lg:flex gap-10 text-gray-500 ">

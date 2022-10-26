@@ -7,8 +7,8 @@ const CheckOut = () => {
   const checkOutCourse = useLoaderData();
   const { id, title, descriptions, price, rating, img } = checkOutCourse;
   return (
-    <div className="p-5  mx-auto">
-      <div className="alert alert-success bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg">
+    <div className="p-5 min-h-screen mx-auto">
+      <div className="w-full lg:w-[70%] mx-auto alert alert-success bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg">
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,10 +29,10 @@ const CheckOut = () => {
           </span>
         </div>
       </div>
-      <div>
-        <Lottie animationData={thankyou} loop={false} />
+      <div className=" mt-4">
+        <Lottie style={{ height: 300 }} animationData={thankyou} loop={false} />
       </div>
-      <div className="text-center">
+      <div className="text-center mt-5">
         <Link to="/courses">
           {" "}
           <button className="btn btn-wide btn-outline">
