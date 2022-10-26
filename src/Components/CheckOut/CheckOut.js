@@ -24,8 +24,8 @@ const CheckOut = () => {
             />
           </svg>
           <span>
-            Your purchase course <span className="text-3xl">{title}</span> has
-            been confirmed!
+            Congratulations!! you got premium access for{" "}
+            <span className="text-3xl">{title}</span>
           </span>
         </div>
       </div>
