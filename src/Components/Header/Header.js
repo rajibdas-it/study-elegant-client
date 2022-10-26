@@ -17,10 +17,10 @@ const Header = () => {
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
-      toast.success("Theme Dark", { autoClose: 1000 });
+      toast.success("Set Theme Dark", { autoClose: 1500 });
     } else {
       setTheme("light");
-      toast.success("Theme Light", { autoClose: 1000 });
+      toast.success("Set Theme Light", { autoClose: 1500 });
     }
   };
 
