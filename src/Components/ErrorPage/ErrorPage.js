@@ -1,12 +1,10 @@
-import { LottiePlayer } from "lottie-react";
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
-import Lottie from "lottie-react";
 import errorImg from "../../assets/error.gif";
 
 const ErrorPage = () => {
   const error = useRouteError();
-  console.log(error);
+
   return (
     <div className=" w-[70%] mx-auto">
       <div className="w-[60%] mx-auto mt-5">
