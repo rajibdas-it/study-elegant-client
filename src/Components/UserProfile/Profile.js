@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
 import Swal from "sweetalert2";
-
+import noimg from "../../assets/noimg.webp";
 const Profile = () => {
   const { user, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -38,6 +38,15 @@ const Profile = () => {
     <div>
       <div className="hero min-h-screen">
         <div className="hero-content flex-col ">
+          <div className="avatar text-center">
+            <div className="w-32 rounded">
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+                <img src={noimg} alt="" />
+              )}
+            </div>
+          </div>
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold italic text-blue-500">
               Profile of {user.displayName}
