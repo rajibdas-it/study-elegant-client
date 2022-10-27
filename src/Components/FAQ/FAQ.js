@@ -41,6 +41,14 @@ const FAQ = () => {
           </details>
           <details className="w-full border rounded-lg shadow-lg">
             <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
+              Do you have login system using social account?
+            </summary>
+            <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
+              Yes. User can log in with google and github account.
+            </p>
+          </details>
+          <details className="w-full border rounded-lg shadow-lg">
+            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
               Is your website responsive?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400">
