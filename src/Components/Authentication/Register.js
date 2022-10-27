@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -11,8 +12,8 @@ const Register = () => {
     updateUserProfile,
     userEmailVerify,
   } = useContext(AuthContext);
-  const [fullName, setFullName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
+  // const [fullName, setFullName] = useState("");
+  // const [photoURL, setPhotoURL] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
   const navigate = useNavigate();
@@ -35,7 +36,13 @@ const Register = () => {
           form.reset();
           handleUpdateUseProfile(fullName, photoURL);
           handleEmailVerify();
+          Swal.fire(
+            "Contratulation!",
+            "Please check your email and verified it. Dont forget to check spam folder.!",
+            "success"
+          );
           navigate("/");
+
           toast.success(
             "Account Created Successfully. Please check your email and Verify it.",
             { autoClose: 1500 }
@@ -48,6 +55,7 @@ const Register = () => {
           toast.error(error.message, { autoClose: 1500 });
         });
     } else {
+      setErrorMsg("Password and Confirm Password Not Matched");
       toast.error("Password and Confirm doesn't match", { autoClose: 1500 });
     }
     // console.log(email, password, confirmPassword);
@@ -110,7 +118,7 @@ const Register = () => {
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             {/* error msg display */}
-            {/* {errorMsg && (
+            {errorMsg && (
               <div className="alert alert-error shadow-lg">
                 <div>
                   <svg
@@ -129,7 +137,7 @@ const Register = () => {
                   <span>{errorMsg}</span>
                 </div>
               </div>
-            )} */}
+            )}
             {/* error msg display */}
             <form onSubmit={handleRegister} className="card-body">
               <div className="form-control">
