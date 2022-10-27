@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Lottie from "lottie-react";
 // import one from "../../assets/others/11.json";
 //import two from "../../assets/others/3.json";
-import three from "../../assets/others/5.json";
+import three from "../../assets/others/3.json";
 import { CourseContext } from "../../Layout/Main";
 import Course from "../Course/Course";
 import Slider from "../Slider/Slider";

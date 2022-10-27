@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import logoTwo from "../../assets/logo-2.png";
 import { AuthContext } from "../../Context/UserContext";
 import noimg from "../../assets/noimg.webp";
 import { toast } from "react-toastify";
@@ -34,7 +35,7 @@ const Header = () => {
     <div className="navbar shadow-lg">
       <div className="flex-1 ml-3">
         <Link to="/">
-          <img className="w-full" src={logo} alt="" />
+          <img className="w-full h-[60px]" src={logo} alt="" />
         </Link>
       </div>
       <input
