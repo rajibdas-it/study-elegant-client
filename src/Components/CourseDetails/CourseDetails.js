@@ -25,7 +25,7 @@ const CourseDetails = () => {
         <Pdf targetRef={ref} filename={`${title}.pdf`}>
           {({ toPdf }) => (
             <button className="btn btn-outline mt-2 mb-5" onClick={toPdf}>
-              <FaCloudDownloadAlt /> Download
+              <FaCloudDownloadAlt /> Download Course Content
             </button>
           )}
         </Pdf>
