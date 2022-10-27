@@ -2,11 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { AuthContext } from "../../Context/UserContext";
-import Sidebar from "../Courses/Sidebar";
-import { FaRegUser, FaRegUserCircle } from "react-icons/fa";
 import noimg from "../../assets/noimg.webp";
 import { toast } from "react-toastify";
-import { Autoplay } from "swiper";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
