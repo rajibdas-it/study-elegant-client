@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
+import Swal from "sweetalert2";
 
 const Profile = () => {
   const { user, updateUserProfile } = useContext(AuthContext);
@@ -20,7 +21,12 @@ const Profile = () => {
     console.log(profile);
     updateUserProfile(profile)
       .then(() => {
-        toast.success("Profile Updated Successfully", { autoClose: 1500 });
+        Swal.fire(
+          "Congratulation!",
+          "Update Information Successfully",
+          "success"
+        );
+
         navigate("/profile");
       })
       .catch((error) => {
@@ -28,27 +34,9 @@ const Profile = () => {
       });
   };
 
-  // const handleRegister = (event) => {
-  //   event.preventDefault();
-
-  //   const form = event.target;
-  //   const email = form.email.value;
-
-  //   passwordReset(email)
-  //     .then((result) => {
-  //       toast.success(
-  //         "Password Reset Email has been sent to your email. Please Check your spam folder as well as.",
-  //         { autoClose: 1500 }
-  //       );
-  //     })
-  //     .catch((error) => {
-  //       toast.error(error.message, { autoClose: 1500 });
-  //     });
-  // };
-
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold italic text-blue-500">
@@ -56,38 +44,16 @@ const Profile = () => {
             </h1>
             <div className="mt-10 text-center">
               {user.emailVerified ? (
-                <div class="badge badge-success gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    class="inline-block w-4 h-4 stroke-current"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    ></path>
-                  </svg>
-                  User Email Active
+                <div className="alert alert-success shadow-lg">
+                  <div>
+                    <span>User Email Active</span>
+                  </div>
                 </div>
               ) : (
-                <div class="badge badge-warning gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    class="inline-block w-4 h-4 stroke-current"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    ></path>
-                  </svg>
-                  User Email Not Active yet.
+                <div className="alert alert-error shadow-lg">
+                  <div>
+                    <span>User Email Not Active yet.</span>
+                  </div>
                 </div>
               )}
             </div>

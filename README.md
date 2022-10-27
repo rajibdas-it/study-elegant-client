@@ -4,7 +4,7 @@
 
 ## Features of Study Elegant Web Apps:
 
-##### Online Learning Platform, where you can practice and increase your knowledge by taking various quiz challenges.
+##### Online Learning Platform, where you can purchase courses and increase your knowledge by taking various type of courses.
 
 - If you click on details button it will redirect you to the course page.
 - If you click download course content in course details page it will down pdf file of course content.

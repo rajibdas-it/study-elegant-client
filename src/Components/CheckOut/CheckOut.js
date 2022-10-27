@@ -23,9 +23,8 @@ const CheckOut = () => {
         <div className="">
           <section className="p-6 dark:bg-gray-800 dark:text-gray-50">
             <form
-              novalidate=""
               action=""
-              className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
+              className="shadow-lg rounded-lg container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
             >
               <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
                 <div className="space-y-2 col-span-full lg:col-span-1">
@@ -40,7 +39,7 @@ const CheckOut = () => {
                       defaultValue={user?.uid ? user?.displayName : ""}
                       type="text"
                       placeholder="Full Name"
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                      className="w-full py-2 px-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
                     />
                   </div>
 
@@ -52,7 +51,7 @@ const CheckOut = () => {
                       defaultValue={user?.uid ? user?.email : ""}
                       type="email"
                       placeholder="Email"
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                      className="w-full py-2 px-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
                     />
                   </div>
                   <div className="col-span-full">
@@ -62,7 +61,7 @@ const CheckOut = () => {
                     <input
                       type="text"
                       placeholder="Address"
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                      className="w-full py-2 px-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
                     />
                   </div>
                   <div className="col-span-full sm:col-span-2">
@@ -73,7 +72,7 @@ const CheckOut = () => {
                       id="city"
                       type="text"
                       placeholder=""
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                      className="w-full py-2 px-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
                     />
                   </div>
                   <div className="col-span-full sm:col-span-2">
@@ -84,7 +83,7 @@ const CheckOut = () => {
                       id="state"
                       type="text"
                       placeholder=""
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                      className="w-full py-2 px-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
                     />
                   </div>
                   <div className="col-span-full sm:col-span-2">
@@ -95,7 +94,7 @@ const CheckOut = () => {
                       id="zip"
                       type="text"
                       placeholder=""
-                      className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                      className="w-full py-2 px-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
                     />
                   </div>
                 </div>
@@ -105,14 +104,14 @@ const CheckOut = () => {
         </div>
 
         {/* cart div */}
-        <div>
+        <div className="shadow-lg rounded-lg">
           <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
             <h2 className="text-xl font-semibold">Your Shopping Cart</h2>
-            <ul className="flex flex-col divide-y divide-gray-700">
+            <ul className="flex flex-col divide-y divide-gray-700 shadow-lg border rounded border-white">
               <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
                 <div className="flex w-full space-x-2 sm:space-x-4">
                   <img
-                    className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500"
+                    className="ml-3 flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500"
                     src={img}
                     alt="Polaroid camera"
                   />
@@ -121,8 +120,8 @@ const CheckOut = () => {
                       <div className="space-y-1">
                         <h3 className=" font-semibold leading-snug">{title}</h3>
                       </div>
-                      <div className="text-right">
-                        <p className="text-lg font-semibold">$ {price}</p>
+                      <div className="text-right ">
+                        <p className="text-lg font-semibold mr-3">$ {price}</p>
                       </div>
                     </div>
                   </div>
