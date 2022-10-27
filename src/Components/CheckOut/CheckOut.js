@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import Swal from "sweetalert2";
 
@@ -7,6 +7,7 @@ const CheckOut = () => {
   const { user } = useContext(AuthContext);
   const checkOutCourse = useLoaderData();
   const { id, title, descriptions, price, rating, img } = checkOutCourse;
+  const navigate = useNavigate();
 
   const handleCheckOut = () => {
     Swal.fire(
