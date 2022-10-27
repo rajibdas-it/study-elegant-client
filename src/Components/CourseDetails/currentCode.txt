@@ -6,9 +6,6 @@ import {
 } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
-import Pdf from "react-to-pdf";
-const ref = React.createRef();
-
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
   const { id, title, shortDes, descriptions, price, rating, img, TopicCover } =
@@ -22,18 +19,11 @@ const CourseDetails = () => {
         </span>
       </h1>
       <div className="text-center">
-        <Pdf targetRef={ref} filename={`${title}.pdf`}>
-          {({ toPdf }) => (
-            <button className="btn btn-outline mt-2 mb-5" onClick={toPdf}>
-              <FaCloudDownloadAlt /> Download
-            </button>
-          )}
-        </Pdf>
-        {/* <button className="btn btn-outline mt-2 mb-5">
+        <button className="btn btn-outline mt-2 mb-5">
           <FaCloudDownloadAlt /> Download
-        </button> */}
+        </button>
       </div>
-      <div className="card card-compact w-full bg-base-100 shadow-xl" ref={ref}>
+      <div className="card card-compact w-full bg-base-100 shadow-xl">
         <figure>
           <img className="w-full" src={img} alt="Shoes" />
         </figure>
@@ -49,7 +39,7 @@ const CourseDetails = () => {
           </div>
           <p className="font-bold underline">Course Descriptions:</p>
           <p>{descriptions}</p>
-          <div className="mb-2">
+          <div>
             <p className="font-bold underline">Things We Cover</p>
             {TopicCover.map((topic) => (
               <li>{topic}</li>
