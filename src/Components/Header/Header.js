@@ -9,17 +9,17 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   // const user = false;
-  const [theme, setTheme] = useState("light");
+  // const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-      toast.success("Set Theme Dark", { autoClose: 1500 });
-    } else {
-      setTheme("light");
-      toast.success("Set Theme Light", { autoClose: 1500 });
-    }
-  };
+  // const toggleTheme = () => {
+  //   if (theme === "light") {
+  //     setTheme("dark");
+  //     toast.success("Set Theme Dark", { autoClose: 1500 });
+  //   } else {
+  //     setTheme("light");
+  //     toast.success("Set Theme Light", { autoClose: 1500 });
+  //   }
+  // };
 
   // Signout Funciton
   const handleSignOut = () => {
@@ -37,13 +37,13 @@ const Header = () => {
           <img className="w-full h-[60px]" src={logo} alt="" />
         </Link>
       </div>
-      <label htmlFor="btnToggle">Theme {theme}</label>
+      {/* <label htmlFor="btnToggle">Theme {theme}</label>
       <input
         id="btnToggle"
         onClick={toggleTheme}
         type="checkbox"
         className="toggle toggle-md mr-3"
-      />
+      /> */}
       <div className="flex-none gap-2 justify-center items-center">
         <div>
           <ul className="hidden lg:flex gap-10 text-gray-500 ">
